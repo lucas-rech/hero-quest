@@ -32,6 +32,12 @@ build/
 ### VS Code ###
 .vscode/
 
-### AMBIENTE ###
+# Ignorar arquivos de variáveis de ambiente
 .env
+.env.local
+.env.*
+
+# Ignorar arquivos do Docker Compose
+docker-compose.yml
 compose.yaml
+
