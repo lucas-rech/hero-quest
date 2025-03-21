@@ -9,11 +9,9 @@ import java.util.Objects;
 
 //TODO: Verificar se é necessário adicionar a anotação @Table com o nome da tabela
 //TODO: Identificar se fica melhor criptografar a senha na entidade ou no service
-//TODO: Criar relacionamento com a entidade de áreas
 @Setter
 @Getter
 @Entity
-@Table(name = "users")
 public class UserEntity {
 
     @Id
