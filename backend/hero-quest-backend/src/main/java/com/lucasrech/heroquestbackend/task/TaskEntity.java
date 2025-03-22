@@ -1,6 +1,8 @@
 package com.lucasrech.heroquestbackend.task;
 
+import com.lucasrech.heroquestbackend.area.AreaEntity;
 import com.lucasrech.heroquestbackend.task.enums.Status;
+import com.lucasrech.heroquestbackend.user.UserEntity;
 import jakarta.persistence.*;
 
 import lombok.Getter;
@@ -10,7 +12,6 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 
-//TODO: Criar relacionamento com entidade Áreas
 //TODO: Verificar se é necessário criar relacionamento com Usuário
 @Setter
 @Getter
@@ -19,7 +20,7 @@ import java.util.Objects;
 public class TaskEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 100, name = "title")
@@ -43,6 +44,15 @@ public class TaskEntity {
 
     @Column(name = "concluded")
     private LocalDateTime concluded;
+
+    @ManyToOne
+    @JoinColumn(name = "area_id", nullable = false)
+    private AreaEntity area;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
+
 
     public TaskEntity(String title, String description, Long xp, Status status, LocalDateTime created, LocalDateTime updated, LocalDateTime concluded) {
         this.title = title;

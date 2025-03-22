@@ -1,9 +1,12 @@
 package com.lucasrech.heroquestbackend.user;
 
+import com.lucasrech.heroquestbackend.area.AreaEntity;
+import com.lucasrech.heroquestbackend.task.TaskEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -32,6 +35,12 @@ public class UserEntity {
 
     @Column(nullable = false, name = "level")
     private Integer level;
+
+    @OneToMany(mappedBy = "user")
+    private List<TaskEntity> tasks;
+
+    @OneToMany(mappedBy = "user")
+    private List<AreaEntity> areas;
 
     public UserEntity( String name, String email, String password, Long xp, Integer level) {
         this.name = name;
